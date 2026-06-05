@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon: #B8FF00;
+  --dark: #0a0a0a;
+  --dark-secondary: #1a1a1a;
+}
+
+html,
+body {
+  background: var(--dark);
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(184, 255, 0, 0.3);
+  color: #ffffff;
+}
+
+.container-x {
+  @apply mx-auto w-full max-w-6xl px-6 md:px-10;
+}
+
+.btn-neon {
+  @apply relative inline-flex items-center justify-center h-14 px-8 text-[15px] font-medium rounded-full bg-neon text-dark transition-all duration-300 hover:shadow-neon-glow-lg active:scale-95;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center h-12 px-6 text-[14px] font-medium rounded-full border border-neon/40 bg-transparent text-white transition-all duration-300 hover:border-neon hover:shadow-neon-glow;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-neon {
+  background: rgba(184, 255, 0, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(184, 255, 0, 0.2);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(184, 255, 0, 0.5);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

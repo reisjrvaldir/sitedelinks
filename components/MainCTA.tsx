@@ -9,7 +9,7 @@ const BUTTONS = [
     label: "WhatsApp",
     description: "Fale conosco agora",
     icon: MessageCircle,
-    href: "https://wa.me/81995849937",
+    href: "https://wa.me/+5581995849937",
     primary: true,
   },
   {

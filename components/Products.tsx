@@ -157,7 +157,7 @@ const PRODUCTS = [
   },
 ];
 
-const WHATSAPP_URL = "https://wa.me/81995849937";
+const WHATSAPP_URL = "https://wa.me/+5581995849937";
 const INTERVAL = 3500;
 
 const ease = [0.16, 1, 0.3, 1] as const;

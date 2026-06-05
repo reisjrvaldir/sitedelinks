@@ -4,8 +4,8 @@ import { MessageCircle, Instagram, Mail, Globe } from "lucide-react";
 
 
 const LINKS = [
-  { icon: MessageCircle, href: "https://wa.me/5500000000000", label: "WhatsApp" },
-  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: MessageCircle, href: "https://wa.me/81995849937", label: "WhatsApp" },
+  { icon: Instagram, href: "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3ODU5MzI3NjkzNjM3MjMz?igsh=MWhnMmZpNDNsOWNxbw==", label: "Instagram" },
   { icon: Globe, href: "#", label: "Site" },
   { icon: Mail, href: "mailto:contato@novaiphone.com", label: "Email" },
 ];

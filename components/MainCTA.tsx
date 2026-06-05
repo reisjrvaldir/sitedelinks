@@ -9,7 +9,7 @@ const BUTTONS = [
     label: "WhatsApp",
     description: "Fale conosco agora",
     icon: MessageCircle,
-    href: "https://wa.me/5500000000000",
+    href: "https://wa.me/81995849937",
     primary: true,
   },
   {
@@ -17,7 +17,7 @@ const BUTTONS = [
     label: "Tabela de Valores",
     description: "Confira os preços atualizados",
     icon: TrendingUp,
-    href: "#tabela",
+    href: "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTA0NTkzMTI3MDAwNDY1?igsh=MWVtc3ZoaHEzYTlzZw%3D%3D",
   },
   {
     id: "como",
@@ -31,7 +31,7 @@ const BUTTONS = [
     label: "Feedback",
     description: "Avaliações reais dos clientes",
     icon: Star,
-    href: "#feedback",
+    href: "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3ODU5MzI3NjkzNjM3MjMz?igsh=MWhnMmZpNDNsOWNxbw==",
   },
 ];
 

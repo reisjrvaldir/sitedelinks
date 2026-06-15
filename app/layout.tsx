@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Nova iPhone — Encomendas Apple Premium",
   description:
     "Tecnologia no seu ritmo. Encomendas Apple com segurança, agilidade e garantia.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export const viewport: Viewport = {

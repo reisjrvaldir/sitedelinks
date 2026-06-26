@@ -17,7 +17,7 @@ const BUTTONS = [
     label: "Tabela de Valores",
     description: "Confira os preços atualizados",
     icon: TrendingUp,
-    href: "https://www.canva.com/design/DAHL_CNocT4/nAgiaDNhMVtFwgDFCEEpWA/view?utm_content=DAHL_CNocT4&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb3197f71b5",
+    href: "https://canva.link/catalogo-nova",
   },
   {
     id: "como",

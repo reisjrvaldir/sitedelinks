@@ -62,8 +62,8 @@ export default function MainCTA() {
               <motion.a
                 key={btn.id}
                 href={btn.href}
-                target={btn.id === "whatsapp" ? "_blank" : undefined}
-                rel={btn.id === "whatsapp" ? "noreferrer" : undefined}
+                target={btn.id === "whatsapp" || btn.id === "tabela" ? "_blank" : undefined}
+                rel={btn.id === "whatsapp" || btn.id === "tabela" ? "noreferrer" : undefined}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}

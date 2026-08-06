@@ -61,7 +61,7 @@ export default function PrecosLista({ produtos }: { produtos: Produto[] }) {
               href={linkWhatsApp(p)}
               target="_blank"
               rel="noreferrer"
-              className="group flex items-center gap-4 p-4 rounded-2xl glass-neon transition-all duration-300 hover:bg-neon/10 hover:border-neon/50 hover:shadow-neon-glow"
+              className="group flex items-center gap-[21px] p-4 rounded-2xl glass-neon transition-all duration-300 hover:bg-neon/10 hover:border-neon/50 hover:shadow-neon-glow"
             >
               {/* Imagem */}
               <div className="relative flex-shrink-0 h-28 w-24 rounded-xl bg-black/40 overflow-hidden">

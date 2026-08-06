@@ -1,7 +1,10 @@
 export type Produto = {
   nome: string;
   armazenamento: string;
+  /** Preço já formatado (ex. "6.829,99") ou "CONSULTAR". */
   preco: string;
+  /** true quando não há valor numérico e o preço é sob consulta. */
+  sobConsulta: boolean;
   imagem: string;
   tag: string;
 };
@@ -39,13 +42,39 @@ function parseLinha(linha: string): string[] {
   return campos;
 }
 
-function formatarPreco(valor: string): string {
-  const numero = Number(valor.replace(/[^\d,.-]/g, "").replace(",", "."));
-  if (!Number.isFinite(numero) || numero === 0) return valor;
-  return numero.toLocaleString("pt-BR", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
+/**
+ * Converte o preço da planilha (formato brasileiro: "6.829,99") para número.
+ * Retorna null quando a célula não é um valor — "CONSULTAR", vazia, etc.
+ */
+function lerPreco(valor: string): number | null {
+  const limpo = valor.replace(/[^\d,.]/g, "");
+  if (!limpo) return null;
+
+  // O último separador é o decimal; os anteriores são de milhar.
+  const ultimoSeparador = Math.max(limpo.lastIndexOf(","), limpo.lastIndexOf("."));
+  const numero =
+    ultimoSeparador === -1
+      ? Number(limpo)
+      : Number(
+          limpo.slice(0, ultimoSeparador).replace(/[.,]/g, "") +
+            "." +
+            limpo.slice(ultimoSeparador + 1)
+        );
+
+  return Number.isFinite(numero) && numero > 0 ? numero : null;
+}
+
+function formatarPreco(valor: string): Pick<Produto, "preco" | "sobConsulta"> {
+  const numero = lerPreco(valor);
+  if (numero === null) return { preco: "CONSULTAR", sobConsulta: true };
+
+  return {
+    preco: numero.toLocaleString("pt-BR", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }),
+    sobConsulta: false,
+  };
 }
 
 export async function getProdutos(): Promise<Produto[]> {
@@ -64,8 +93,9 @@ export async function getProdutos(): Promise<Produto[]> {
     .filter((c) => c[0]) // precisa ter nome
     .map((c) => ({
       nome: c[0] ?? "",
-      armazenamento: c[1] ?? "",
-      preco: formatarPreco(c[2] ?? ""),
+      // "Não aplicável" é ruído para acessórios sem variação de armazenamento.
+      armazenamento: /não aplic/i.test(c[1] ?? "") ? "" : c[1] ?? "",
+      ...formatarPreco(c[2] ?? ""),
       imagem: c[3] ?? "",
       tag: c[4] ?? "",
     }));

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, CreditCard, ShieldCheck } from "lucide-react";
+import { ArrowLeft, CreditCard, ShieldCheck, Smartphone } from "lucide-react";
 import { getProdutos } from "@/lib/sheets";
 
 export const revalidate = 60;
@@ -33,7 +33,7 @@ export default async function Precos() {
         {/* Cabeçalho */}
         <header className="text-center mb-8">
           <h1 className="text-4xl md:text-6xl font-bold leading-[0.95]">
-            iPhones
+            Produtos
             <br />
             <span className="text-neon text-glow">Lacrados</span>
           </h1>
@@ -66,7 +66,7 @@ export default async function Precos() {
               >
                 {/* Imagem */}
                 <div className="relative flex-shrink-0 h-20 w-16 rounded-xl bg-black/40 overflow-hidden">
-                  {p.imagem && (
+                  {p.imagem ? (
                     /* eslint-disable-next-line @next/next/no-img-element */
                     <img
                       src={p.imagem}
@@ -74,6 +74,10 @@ export default async function Precos() {
                       className="h-full w-full object-contain"
                       referrerPolicy="no-referrer"
                     />
+                  ) : (
+                    <div className="h-full w-full flex items-center justify-center">
+                      <Smartphone className="h-6 w-6 text-neon/25" strokeWidth={1.5} />
+                    </div>
                   )}
                   {p.tag && (
                     <span className="absolute top-1 left-1 px-1.5 py-0.5 rounded-md bg-neon text-dark text-[9px] font-bold leading-none">
@@ -87,13 +91,21 @@ export default async function Precos() {
                   <h2 className="text-[15px] font-semibold leading-tight truncate">
                     {p.nome}
                   </h2>
-                  <p className="text-gray-400 text-[13px] mt-0.5">
-                    {p.armazenamento}
-                  </p>
-                  <p className="text-neon text-2xl font-bold mt-1.5 leading-none">
-                    <span className="text-sm font-medium mr-0.5">R$</span>
-                    {p.preco}
-                  </p>
+                  {p.armazenamento && (
+                    <p className="text-gray-400 text-[13px] mt-0.5">
+                      {p.armazenamento}
+                    </p>
+                  )}
+                  {p.sobConsulta ? (
+                    <p className="text-neon/70 text-base font-semibold mt-1.5 leading-none tracking-wide">
+                      CONSULTAR
+                    </p>
+                  ) : (
+                    <p className="text-neon text-2xl font-bold mt-1.5 leading-none">
+                      <span className="text-sm font-medium mr-0.5">R$</span>
+                      {p.preco}
+                    </p>
+                  )}
                 </div>
               </a>
             ))}

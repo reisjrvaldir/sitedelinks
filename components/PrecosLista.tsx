@@ -85,25 +85,19 @@ export default function PrecosLista({ produtos }: { produtos: Produto[] }) {
                 )}
               </div>
 
-              {/* Nome e armazenamento */}
+              {/* Nome, armazenamento e valor */}
               <div className="flex-1 min-w-0">
-                <h2 className="text-[16px] font-semibold leading-tight">{p.nome}</h2>
+                <h2 className="text-[19px] font-semibold leading-tight">{p.nome}</h2>
                 {p.armazenamento && (
-                  <p className="text-gray-400 text-[13px] mt-1">{p.armazenamento}</p>
+                  <p className="text-gray-400 text-[15px] mt-0.5">{p.armazenamento}</p>
                 )}
-              </div>
-
-              {/* Valor */}
-              <div className="flex-shrink-0 text-right">
                 {p.sobConsulta ? (
-                  <p className="text-neon/70 text-[13px] font-semibold leading-tight tracking-wide">
+                  <p className="text-neon/70 text-[17px] font-semibold mt-2 leading-none tracking-wide">
                     CONSULTAR
                   </p>
                 ) : (
-                  <p className="text-neon text-xl font-bold leading-none whitespace-nowrap">
-                    <span className="block text-[11px] font-medium text-neon/70 mb-0.5">
-                      R$
-                    </span>
+                  <p className="text-neon text-2xl font-bold mt-2 leading-none">
+                    <span className="text-sm font-medium mr-0.5">R$</span>
                     {p.preco}
                   </p>
                 )}

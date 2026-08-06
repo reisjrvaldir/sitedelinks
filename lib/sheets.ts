@@ -1,5 +1,17 @@
+export const CATEGORIAS = [
+  "iPhone",
+  "iPad",
+  "Mac",
+  "Watch",
+  "AirPods",
+  "Acessórios",
+] as const;
+
+export type Categoria = (typeof CATEGORIAS)[number];
+
 export type Produto = {
   nome: string;
+  categoria: Categoria;
   armazenamento: string;
   /** Preço já formatado (ex. "6.829,99") ou "CONSULTAR". */
   preco: string;
@@ -40,6 +52,23 @@ function parseLinha(linha: string): string[] {
   }
   campos.push(atual.trim());
   return campos;
+}
+
+/**
+ * Deduz a categoria pelo nome do produto. A ordem importa: acessórios que
+ * citam outro produto ("Teclado MacBook") precisam ser testados antes dele.
+ */
+function categorizar(nome: string): Categoria {
+  const regras: [RegExp, Categoria][] = [
+    [/teclado|pencil|magic mouse|airtag|carregador|cabo|capa/i, "Acessórios"],
+    [/airpods/i, "AirPods"],
+    [/watch|ultra \d|s[ée]ries? \d|\bSE \d\b/i, "Watch"],
+    [/ipad/i, "iPad"],
+    [/mac/i, "Mac"],
+    [/iphone/i, "iPhone"],
+  ];
+
+  return regras.find(([padrao]) => padrao.test(nome))?.[1] ?? "Acessórios";
 }
 
 /**
@@ -93,6 +122,7 @@ export async function getProdutos(): Promise<Produto[]> {
     .filter((c) => c[0]) // precisa ter nome
     .map((c) => ({
       nome: c[0] ?? "",
+      categoria: categorizar(c[0] ?? ""),
       // "Não aplicável" é ruído para acessórios sem variação de armazenamento.
       armazenamento: /não aplic/i.test(c[1] ?? "") ? "" : c[1] ?? "",
       ...formatarPreco(c[2] ?? ""),

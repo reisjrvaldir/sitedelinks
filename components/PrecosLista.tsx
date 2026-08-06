@@ -61,10 +61,10 @@ export default function PrecosLista({ produtos }: { produtos: Produto[] }) {
               href={linkWhatsApp(p)}
               target="_blank"
               rel="noreferrer"
-              className="group flex items-center gap-4 p-3 rounded-2xl glass-neon transition-all duration-300 hover:bg-neon/10 hover:border-neon/50 hover:shadow-neon-glow"
+              className="group flex items-center gap-4 p-4 rounded-2xl glass-neon transition-all duration-300 hover:bg-neon/10 hover:border-neon/50 hover:shadow-neon-glow"
             >
               {/* Imagem */}
-              <div className="relative flex-shrink-0 h-20 w-16 rounded-xl bg-black/40 overflow-hidden">
+              <div className="relative flex-shrink-0 h-28 w-24 rounded-xl bg-black/40 overflow-hidden">
                 {p.imagem ? (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
@@ -75,7 +75,7 @@ export default function PrecosLista({ produtos }: { produtos: Produto[] }) {
                   />
                 ) : (
                   <div className="h-full w-full flex items-center justify-center">
-                    <Smartphone className="h-6 w-6 text-neon/25" strokeWidth={1.5} />
+                    <Smartphone className="h-8 w-8 text-neon/25" strokeWidth={1.5} />
                   </div>
                 )}
                 {p.tag && (
@@ -85,21 +85,25 @@ export default function PrecosLista({ produtos }: { produtos: Produto[] }) {
                 )}
               </div>
 
-              {/* Nome, armazenamento e preço */}
+              {/* Nome e armazenamento */}
               <div className="flex-1 min-w-0">
-                <h2 className="text-[15px] font-semibold leading-tight truncate">
-                  {p.nome}
-                </h2>
+                <h2 className="text-[16px] font-semibold leading-tight">{p.nome}</h2>
                 {p.armazenamento && (
-                  <p className="text-gray-400 text-[13px] mt-0.5">{p.armazenamento}</p>
+                  <p className="text-gray-400 text-[13px] mt-1">{p.armazenamento}</p>
                 )}
+              </div>
+
+              {/* Valor */}
+              <div className="flex-shrink-0 text-right">
                 {p.sobConsulta ? (
-                  <p className="text-neon/70 text-base font-semibold mt-1.5 leading-none tracking-wide">
+                  <p className="text-neon/70 text-[13px] font-semibold leading-tight tracking-wide">
                     CONSULTAR
                   </p>
                 ) : (
-                  <p className="text-neon text-2xl font-bold mt-1.5 leading-none">
-                    <span className="text-sm font-medium mr-0.5">R$</span>
+                  <p className="text-neon text-xl font-bold leading-none whitespace-nowrap">
+                    <span className="block text-[11px] font-medium text-neon/70 mb-0.5">
+                      R$
+                    </span>
                     {p.preco}
                   </p>
                 )}

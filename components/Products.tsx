@@ -13,7 +13,7 @@ const PRODUCTS = [
     tag: "Novo",
     bg: "from-sky-900/60 via-slate-900/80 to-black",
     accent: "#64d2ff",
-    img: "/iphones/iphone-16.png",
+    img: "/iphones/iphone-16.jpg",
   },
   {
     id: "iphone-15",
@@ -23,7 +23,7 @@ const PRODUCTS = [
     tag: "",
     bg: "from-blue-900/60 via-slate-900/80 to-black",
     accent: "#0a84ff",
-    img: "/iphones/iphone-15.png",
+    img: "/iphones/iphone-15.jpg",
   },
   {
     id: "iphone-17-pro-max",
@@ -33,7 +33,7 @@ const PRODUCTS = [
     tag: "Lançamento",
     bg: "from-rose-900/50 via-slate-900/80 to-black",
     accent: "#ff375f",
-    img: "/iphones/iphone-17-pro-max.png",
+    img: "/iphones/iphone-17-pro-max.jpg",
   },
   {
     id: "iphone-15-pro",
@@ -43,7 +43,7 @@ const PRODUCTS = [
     tag: "",
     bg: "from-stone-700/60 via-zinc-900/80 to-black",
     accent: "#98989d",
-    img: "/iphones/iphone-15-pro.png",
+    img: "/iphones/iphone-15-pro.jpg",
   },
   {
     id: "iphone-15-pro-max",
@@ -53,7 +53,7 @@ const PRODUCTS = [
     tag: "",
     bg: "from-yellow-900/40 via-zinc-900/80 to-black",
     accent: "#ffd60a",
-    img: "/iphones/iphone-15-pro-max.png",
+    img: "/iphones/iphone-15-pro-max.jpg",
   },
   {
     id: "iphone-16-pro",

@@ -17,7 +17,7 @@ const BUTTONS = [
     label: "Tabela de Valores",
     description: "Confira os preços atualizados",
     icon: TrendingUp,
-    href: "https://canva.link/catalogo-nova",
+    href: "/precos",
   },
   {
     id: "como",
@@ -62,8 +62,8 @@ export default function MainCTA() {
               <motion.a
                 key={btn.id}
                 href={btn.href}
-                target={btn.id === "whatsapp" || btn.id === "tabela" ? "_blank" : undefined}
-                rel={btn.id === "whatsapp" || btn.id === "tabela" ? "noreferrer" : undefined}
+                target={btn.href.startsWith("http") ? "_blank" : undefined}
+                rel={btn.href.startsWith("http") ? "noreferrer" : undefined}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}

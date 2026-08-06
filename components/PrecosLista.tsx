@@ -6,19 +6,16 @@ import { CATEGORIAS, type Categoria, type Produto } from "@/lib/sheets";
 
 const WHATSAPP_URL = "https://wa.me/+5581995849937";
 
-type Filtro = Categoria | "Todos";
-
 export default function PrecosLista({ produtos }: { produtos: Produto[] }) {
-  const [filtro, setFiltro] = useState<Filtro>("Todos");
-
   // Só mostra abas de categorias que existem na planilha.
-  const abas = useMemo<Filtro[]>(() => {
+  const abas = useMemo<Categoria[]>(() => {
     const presentes = new Set(produtos.map((p) => p.categoria));
-    return ["Todos", ...CATEGORIAS.filter((c) => presentes.has(c))];
+    return CATEGORIAS.filter((c) => presentes.has(c));
   }, [produtos]);
 
-  const visiveis =
-    filtro === "Todos" ? produtos : produtos.filter((p) => p.categoria === filtro);
+  const [filtro, setFiltro] = useState<Categoria>("iPhone");
+
+  const visiveis = produtos.filter((p) => p.categoria === filtro);
 
   return (
     <>

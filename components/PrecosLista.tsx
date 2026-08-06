@@ -4,7 +4,16 @@ import { useMemo, useState } from "react";
 import { Smartphone } from "lucide-react";
 import { CATEGORIAS, type Categoria, type Produto } from "@/lib/sheets";
 
-const WHATSAPP_URL = "https://wa.me/+5581995849937";
+const WHATSAPP = "https://wa.me/+5581995849937";
+
+/** Monta o link do WhatsApp já com a mensagem sobre o produto escolhido. */
+function linkWhatsApp(p: Produto): string {
+  const aparelho = [p.nome, p.armazenamento].filter(Boolean).join(" ");
+  const valor = p.sobConsulta ? "" : ` no valor de R$ ${p.preco}`;
+  const texto = `Olá! Gostaria de saber mais sobre esse aparelho ${aparelho}${valor}, consegue me ajudar?`;
+
+  return `${WHATSAPP}?text=${encodeURIComponent(texto)}`;
+}
 
 export default function PrecosLista({ produtos }: { produtos: Produto[] }) {
   // Só mostra abas de categorias que existem na planilha.
@@ -49,7 +58,7 @@ export default function PrecosLista({ produtos }: { produtos: Produto[] }) {
           {visiveis.map((p, i) => (
             <a
               key={`${p.nome}-${p.armazenamento}-${i}`}
-              href={WHATSAPP_URL}
+              href={linkWhatsApp(p)}
               target="_blank"
               rel="noreferrer"
               className="group flex items-center gap-4 p-3 rounded-2xl glass-neon transition-all duration-300 hover:bg-neon/10 hover:border-neon/50 hover:shadow-neon-glow"

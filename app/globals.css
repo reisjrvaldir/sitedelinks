@@ -17,6 +17,18 @@ body {
   scroll-behavior: smooth;
 }
 
+/* A página de preços usa o tema claro da Apple; o body precisa acompanhar
+   para o overscroll não revelar o fundo escuro do restante do site. */
+body:has(.apple-theme) {
+  background: #ffffff;
+  color: #1d1d1f;
+}
+
+body:has(.apple-theme) ::selection {
+  background: rgba(0, 113, 227, 0.2);
+  color: #1d1d1f;
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
 }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
+import { ArrowLeft, CreditCard, ShieldCheck } from "lucide-react";
 import { getProdutos } from "@/lib/sheets";
 import PrecosLista from "@/components/PrecosLista";
 
@@ -14,41 +14,50 @@ export default async function Precos() {
   const produtos = await getProdutos();
 
   return (
-    <main className="apple-theme min-h-screen bg-apple-bg text-apple-ink antialiased">
-      <div className="mx-auto w-full max-w-[1024px] px-6 pb-24 md:px-10">
+    <main className="bg-dark text-white min-h-screen">
+      {/* Glow de fundo */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full blur-3xl opacity-20 bg-neon/20" />
+      </div>
+
+      <div className="container-x relative z-10 py-8">
         <Link
           href="/"
-          className="inline-flex items-center gap-0.5 pt-6 text-[14px] text-apple-blue transition-opacity hover:opacity-70"
+          className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-neon transition-colors mb-6"
         >
-          <ChevronLeft className="h-4 w-4" strokeWidth={2} />
+          <ArrowLeft className="h-4 w-4" />
           Voltar
         </Link>
 
-        <header className="pb-12 pt-10 md:pb-16 md:pt-14">
-          <p className="mb-2 text-[19px] leading-[1.2] tracking-[-0.02em] text-apple-highlight md:text-[24px]">
-            Produtos lacrados
-          </p>
-          <h1 className="max-w-3xl text-[40px] font-semibold leading-[1.05] tracking-[-0.015em] md:text-[56px]">
-            Escolha o seu.
+        {/* Cabeçalho */}
+        <header className="text-center mb-8">
+          <h1 className="text-4xl md:text-6xl font-bold leading-[0.95]">
+            Produtos
             <br />
-            <span className="text-apple-muted">Novo, com garantia Apple.</span>
+            <span className="text-neon text-glow">Lacrados</span>
           </h1>
-          <p className="mt-5 max-w-xl text-[17px] leading-[1.47] text-apple-muted md:text-[19px]">
-            Parcelamento em até 18x no cartão. Fale com a gente pelo WhatsApp e
-            receba o atendimento na hora.
+          <p className="text-gray-300 mt-3 text-sm md:text-base">
+            Produtos novos · Garantia Apple
           </p>
+
+          <div className="inline-flex items-center gap-2 mt-5 px-5 py-2.5 rounded-full glass-neon">
+            <CreditCard className="h-4 w-4 text-neon" strokeWidth={1.8} />
+            <span className="text-sm">
+              Em até <strong className="text-neon">18x</strong> no cartão
+            </span>
+          </div>
         </header>
 
         <PrecosLista produtos={produtos} />
 
-        <footer className="mt-20 border-t border-apple-hairline pt-6">
-          <p className="text-[12px] leading-[1.5] text-apple-muted">
+        {/* Rodapé */}
+        <div className="max-w-4xl mx-auto mt-8 flex items-start gap-2 text-[11px] text-gray-500 leading-relaxed">
+          <ShieldCheck className="h-4 w-4 flex-shrink-0 text-neon/60 mt-0.5" strokeWidth={1.8} />
+          <p>
             Preços sujeitos à alteração conforme disponibilidade, cor,
-            armazenamento, fornecedor e cotação do momento. Apple é marca
-            registrada da Apple Inc. A Nova iPhone não possui vínculo com a
-            Apple Inc.
+            armazenamento, fornecedor e cotação do momento.
           </p>
-        </footer>
+        </div>
       </div>
     </main>
   );

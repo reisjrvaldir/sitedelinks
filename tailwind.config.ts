@@ -8,17 +8,6 @@ const config: Config = {
         neon: "#B8FF00",
         dark: "#0a0a0a",
         "dark-secondary": "#1a1a1a",
-        // Paleta da Apple Store, usada na página de preços.
-        apple: {
-          bg: "#ffffff",
-          surface: "#f5f5f7",
-          ink: "#1d1d1f",
-          muted: "#6e6e73",
-          blue: "#0071e3",
-          "blue-hover": "#0077ed",
-          highlight: "#bf4800",
-          hairline: "#d2d2d7",
-        },
       },
       fontFamily: {
         sans: [

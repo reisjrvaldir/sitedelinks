@@ -65,7 +65,7 @@ export default async function Precos() {
                 className="group flex items-center gap-4 p-3 rounded-2xl glass-neon transition-all duration-300 hover:bg-neon/10 hover:border-neon/50 hover:shadow-neon-glow"
               >
                 {/* Imagem */}
-                <div className="flex-shrink-0 h-20 w-16 rounded-xl bg-black/40 overflow-hidden">
+                <div className="relative flex-shrink-0 h-20 w-16 rounded-xl bg-black/40 overflow-hidden">
                   {p.imagem && (
                     /* eslint-disable-next-line @next/next/no-img-element */
                     <img
@@ -74,6 +74,11 @@ export default async function Precos() {
                       className="h-full w-full object-contain"
                       referrerPolicy="no-referrer"
                     />
+                  )}
+                  {p.tag && (
+                    <span className="absolute top-1 left-1 px-1.5 py-0.5 rounded-md bg-neon text-dark text-[9px] font-bold leading-none">
+                      {p.tag}
+                    </span>
                   )}
                 </div>
 

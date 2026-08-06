@@ -3,6 +3,7 @@ export type Produto = {
   armazenamento: string;
   preco: string;
   imagem: string;
+  tag: string;
 };
 
 const SHEET_ID =
@@ -56,15 +57,16 @@ export async function getProdutos(): Promise<Produto[]> {
   const csv = await res.text();
   const linhas = csv.split("\n").filter((l) => l.trim().length > 0);
 
-  // Colunas da planilha: URL | NOME | ARM. | VALOR
+  // Colunas da planilha: Nome | Armazenamento | Preço | Imagem | Tag
   return linhas
     .slice(1) // pula o cabeçalho
     .map(parseLinha)
-    .filter((c) => c[1]) // precisa ter nome
+    .filter((c) => c[0]) // precisa ter nome
     .map((c) => ({
-      imagem: c[0] ?? "",
-      nome: c[1] ?? "",
-      armazenamento: c[2] ?? "",
-      preco: formatarPreco(c[3] ?? ""),
+      nome: c[0] ?? "",
+      armazenamento: c[1] ?? "",
+      preco: formatarPreco(c[2] ?? ""),
+      imagem: c[3] ?? "",
+      tag: c[4] ?? "",
     }));
 }
